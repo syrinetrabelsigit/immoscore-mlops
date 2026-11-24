@@ -223,6 +223,6 @@ __marimo__/
 .streamlit/secrets.toml
 
 
-data/
+data/**/*.csv
 models/
 reports/
