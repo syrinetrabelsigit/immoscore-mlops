@@ -1,4 +1,8 @@
 [core]
-    remote = local
+    remote = s3
 ['remote "local"']
     url = ../../dvc_storage
+['remote "s3"']
+    url = s3://immoscore/dvc
+    endpointurl = https://ectvtvnhpkyfamhhwrge.storage.supabase.co/storage/v1/s3
+    region = eu-central-2
