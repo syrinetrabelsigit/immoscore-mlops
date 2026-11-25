@@ -1,0 +1,19 @@
+stages:
+  process:
+    cmd: python src/data_process.py
+    deps: [src/data_process.py, data/raw/data.csv]
+    params: [process.corr_threshold]
+    outs: [data/processed]
+  split:
+    cmd: python src/split.py
+    deps: [src/split.py, data/processed]
+    params: [split.test_size, split.n_bins, split.seed]
+    outs: [data/split]
+  train:
+    cmd: python src/train.py
+    deps: [src/train.py, data/split]
+    outs: [models/model.pkl]
+  evaluate:
+    cmd: python src/eval.py
+    deps: [src/eval.py, models/model.pkl, data/split]
+    metrics: [reports/metrics.json]
